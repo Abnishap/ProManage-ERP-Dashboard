@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProManage - Tasks</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="d-flex">
+    <nav id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <img src="assets/logo.svg" alt="Logo" class="sidebar-logo">
+        <h5>ProManage</h5>
+      </div>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="inventory.html">
+            <i class="fas fa-boxes"></i> Inventory
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="projects.html">
+            <i class="fas fa-project-diagram"></i> Projects
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="resources.html">
+            <i class="fas fa-users"></i> Resources
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="reports.html">
+            <i class="fas fa-chart-bar"></i> Reports
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="tasks.html">
+            <i class="fas fa-tasks"></i> Tasks
+          </a>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <button id="logoutBtn" class="btn btn-outline-light btn-sm">Logout</button>
+      </div>
+    </nav>
+
+    <div class="main-content flex-grow-1">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <button class="btn btn-outline-secondary d-md-none" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="d-flex align-items-center">
+            <img src="assets/profile.svg" alt="Profile" class="profile-img me-2">
+            <span>Welcome, Abnisha Paudel</span>
+          </div>
+          <div class="d-flex">
+            <button class="btn btn-outline-secondary" id="notificationsBtn" title="Notifications">
+              <i class="fas fa-bell"></i>
+              <span class="badge bg-danger">0</span>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container-fluid mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2>Task Management</h2>
+          <button class="btn btn-primary" id="addTaskBtn" data-bs-toggle="modal" data-bs-target="#taskModal">
+            <i class="fas fa-plus"></i> Add Task
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped" id="tasksTable">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Project</th>
+                    <th>Assigned To</th>
+                    <th>Due Date</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="tasksTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="taskModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="taskModalLabel">Add Task</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="taskForm">
+            <input type="hidden" id="taskId">
+            <div class="mb-3">
+              <label for="taskTitle" class="form-label">Task Title</label>
+              <input type="text" class="form-control" id="taskTitle" required>
+            </div>
+            <div class="mb-3">
+              <label for="taskProject" class="form-label">Project</label>
+              <input type="text" class="form-control" id="taskProject" required>
+            </div>
+            <div class="mb-3">
+              <label for="taskAssignedTo" class="form-label">Assigned To</label>
+              <input type="text" class="form-control" id="taskAssignedTo" required>
+            </div>
+            <div class="mb-3">
+              <label for="taskDueDate" class="form-label">Due Date</label>
+              <input type="date" class="form-control" id="taskDueDate" required>
+            </div>
+            <div class="mb-3">
+              <label for="taskPriority" class="form-label">Priority</label>
+              <select class="form-select" id="taskPriority" required>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="taskStatus" class="form-label">Status</label>
+              <select class="form-select" id="taskStatus" required>
+                <option value="Open">Open</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="saveTaskBtn">Save Task</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="data/mockData.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/tasks.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

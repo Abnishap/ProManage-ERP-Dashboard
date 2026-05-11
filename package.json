@@ -1,0 +1,13 @@
+{
+  "name": "promanage-dashboard",
+  "version": "1.0.0",
+  "description": "ERP-style manager and project coordinator dashboard with backend API",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}

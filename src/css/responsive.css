@@ -1,0 +1,87 @@
+/* Responsive Styles */
+
+/* Mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .kanban-board {
+    flex-direction: column;
+  }
+
+  .kanban-column {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .calendar-grid {
+    grid-template-columns: repeat(7, minmax(30px, 1fr));
+  }
+
+  .calendar-day {
+    padding: 5px;
+    font-size: 12px;
+    min-height: 40px;
+  }
+
+  .table-responsive {
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .main-content {
+    margin-left: 200px;
+  }
+
+  .kanban-column {
+    min-width: 250px;
+  }
+
+  .calendar-grid {
+    grid-template-columns: repeat(7, minmax(40px, 1fr));
+  }
+}
+
+/* Laptop and Desktop */
+@media (min-width: 1025px) {
+  .sidebar {
+    width: 250px;
+  }
+
+  .main-content {
+    margin-left: 250px;
+  }
+
+  .kanban-column {
+    min-width: 300px;
+  }
+}
+
+/* Hide sidebar on mobile by default */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .sidebar.show {
+    display: block;
+  }
+}

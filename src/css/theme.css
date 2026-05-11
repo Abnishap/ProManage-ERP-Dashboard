@@ -1,0 +1,22 @@
+.button.primary {
+  background: linear-gradient(135deg, #4f91ff, #2976f3);
+}
+
+.button.outline:hover,
+.button.primary:hover {
+  opacity: 0.95;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: rgba(95, 169, 255, 0.18);
+}
+
+.chart-bar {
+  background: linear-gradient(180deg, #5fa9ff, #2a76db);
+}
+
+.badge.success { background: var(--success); }
+.badge.warning { background: var(--warning); }
+.badge.danger { background: var(--danger); }
+.badge.accent { background: var(--accent); }
